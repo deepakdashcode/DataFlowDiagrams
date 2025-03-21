@@ -1,0 +1,34 @@
+digraph DFD_Level_1 {
+    rankdir=LR;
+    ranksep=1.2; // Increase vertical space
+    nodesep=1.0; // Increase horizontal space
+    node [shape=box, style=filled, fillcolor=lightgray, margin=0.2];
+    node [shape=box, style=filled, fillcolor=lightgray];
+
+    // External Entities
+    Teacher [label="Teacher", shape=box, fillcolor=lightblue];
+    Student [label="Student", shape=box, fillcolor=lightblue];
+
+    // Main Process
+    Process [label="Subjective\nAnswer\nEvaluation\nSystem", shape=circle, fillcolor=lightyellow];
+    AuthSys [label="Authentication\nSystem", shape=circle, fillcolor=lightyellow];
+    EmailServer [label="Email\nServer", shape=circle, fillcolor=lightyellow];
+    AIModel [label="AI\nModel", shape=circle, fillcolor=lightyellow];
+    userValidation [label="User\nValidator", shape=circle, fillcolor=lightyellow];
+    quizManagement [label="Quiz\nManagement\nSystem", shape=circle, fillcolor=lightyellow];
+    // Data Stores
+    DataStore [label="Data Store", shape=parallelogram, fillcolor=lightpink];
+
+    // External Data
+    Quiz [label="Quiz", shape=box, fillcolor=lightgray];
+
+    // Data Flows
+    Teacher -> AuthSys [label="Create Account"];
+    Teacher -> AuthSys [label="Login"];
+    Student -> AuthSys [label="Create Account"];
+    Student -> AuthSys [label="Login"];
+    
+    AuthSys -> DataStore [label="Stores User Data"]
+    
+    
+}
