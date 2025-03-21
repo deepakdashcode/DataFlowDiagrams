@@ -1,0 +1,45 @@
+// goto a graphviz editor like https://dreampuf.github.io/GraphvizOnline/?engine=dot and paste the code in it
+
+digraph DFD_Level_0 {
+    rankdir=LR;
+    ranksep=1.2; // Increase vertical space
+    nodesep=1.0; // Increase horizontal space
+    node [shape=box, style=filled, fillcolor=lightgray, margin=0.2];
+    node [shape=box, style=filled, fillcolor=lightgray];
+
+    // External Entities
+    Teacher [label="Teacher", shape=box, fillcolor=lightblue];
+    Student [label="Student", shape=box, fillcolor=lightblue];
+
+    // Main Process
+    Process [label="Subjective\nAnswer\nEvaluation\nSystem", shape=circle, fillcolor=lightyellow];
+
+    // Data Stores
+    DataStore [label="Data Store", shape=parallelogram, fillcolor=lightpink];
+
+    // External Data
+    Quiz [label="Quiz", shape=box, fillcolor=lightgray];
+    Email [label="Email", shape=box, fillcolor=lightgray];
+    FinalResult [label="Finalized Result", shape=box, fillcolor=lightgray];
+
+    // Data Flows
+    Teacher -> Process [label="Create Account"];
+    Teacher -> Process [label="Login"];
+    Teacher -> Process [label="Create Quiz"];
+    Teacher -> Process [label="Evaluate Quiz"];
+
+    Student -> Process [label="Create Account"];
+    Student -> Process [label="Login"];
+    Student -> Process [label="Attempt Quiz"];
+
+    Process -> Student [label="Send Results"];
+    
+    Process -> DataStore [label="Store User Data"];
+    Process -> DataStore [label="Store Quiz Data"];
+    
+    Process -> Quiz [label="Fetch"];
+    Process -> Quiz [label="Create"];
+    Process -> Quiz [label="Evaluate"];
+    Process -> FinalResult [label="Finalizes"];
+    Process -> Email [label="Sends"];
+}
