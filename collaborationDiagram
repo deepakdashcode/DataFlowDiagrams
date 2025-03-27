@@ -1,0 +1,20 @@
+digraph CollaborationDiagram {
+    rankdir=LR;
+    node [shape=ellipse, style=filled, fillcolor=lightblue];
+
+    Student [label="Student"];
+    System [label="System"];
+    Quiz [label="Quiz"];
+    AIGrading [label="AIGrading"];
+    Teacher [label="Teacher"];
+
+    Student -> System [label="Login"];
+    System -> Quiz [label="Fetch Questions"];
+    Student -> Quiz [label="Answer Questions"];
+    Student -> System [label="Submit Quiz"];
+    System -> AIGrading [label="Evaluate"];
+    AIGrading -> System [label="Return Score"];
+    System -> Teacher [label="Store Attempt"];
+    Teacher -> System [label="Verify"];
+    System -> Student [label="Show Results"];
+}
