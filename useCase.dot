@@ -1,0 +1,45 @@
+digraph QuizSystem {
+    rankdir=LR;
+    node [shape=ellipse];
+
+    // Actors
+    Student [shape=actor];
+    Teacher [shape=actor];
+    AI_Grading [shape=ellipse, style=filled, fillcolor=lightgray];
+
+    // Use Cases
+    Register [label="Register/Login"];
+    ViewQuizzes [label="View Available Quizzes"];
+    AttemptQuiz [label="Attempt Quiz"];
+    SubmitQuiz [label="Submit Quiz"];
+    ViewResults [label="View Quiz Results"];
+    
+    CreateQuiz [label="Create/Edit/Delete Quiz"];
+    ViewAttempts [label="View Quiz Attempts & Results"];
+    EvaluateManually [label="Manually Evaluate"];
+    
+    EvaluateAI [label="Evaluate Answers"];
+    AssignScores [label="Assign Scores"];
+    StoreResults [label="Store/Send Results"];
+
+    // Connections
+    Student -> Register;
+    Student -> ViewQuizzes;
+    Student -> AttemptQuiz;
+    Student -> SubmitQuiz;
+    Student -> ViewResults;
+
+    Teacher -> Register;
+    Teacher -> CreateQuiz;
+    Teacher -> ViewAttempts;
+    Teacher -> EvaluateManually;
+
+    AI_Grading -> EvaluateAI;
+    AI_Grading -> AssignScores;
+    AI_Grading -> StoreResults;
+
+    SubmitQuiz -> EvaluateAI;
+    EvaluateAI -> AssignScores;
+    AssignScores -> StoreResults;
+    StoreResults -> ViewResults;
+}
