@@ -1,0 +1,18 @@
+Link : https://www.plantuml.com/  --> It's a UML File
+@startuml
+participant Student
+participant System
+participant AIGrading
+participant Teacher
+
+Student -> System: Login
+System -> Student: Authentication Success
+Student -> System: Select Quiz
+System -> Student: Load Questions
+Student -> System: Submit Answers
+System -> AIGrading: Evaluate Answers
+AIGrading -> System: Return Scores
+System -> Teacher: Store Attempt
+Teacher -> System: Verify Evaluation
+System -> Student: Display Results
+@enduml
