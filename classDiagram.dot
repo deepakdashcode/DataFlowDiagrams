@@ -1,0 +1,27 @@
+digraph ClassDiagram {
+    rankdir=TB;
+    node [shape=record];
+
+    // Classes
+    User [label="{User | +id: int \l +username: string \l +email: string \l +password: string \l | +register() \l +login() \l }"];
+    
+    Student [label="{Student | +attemptQuiz(quizId) \l +viewResults() \l }"];
+    Teacher [label="{Teacher | +createQuiz() \l +editQuiz(quizId) \l +viewAttempts() \l }"];
+    
+    Quiz [label="{Quiz | +id: int \l +title: string \l +questions: List<Question> \l | +create() \l +edit() \l +delete() \l }"];
+    
+    Question [label="{Question | +id: int \l +text: string \l +options: List<string> \l +correctAnswer: string \l | +checkAnswer() \l }"];
+    
+    Attempt [label="{Attempt | +attemptId: int \l +studentId: int \l +quizId: int \l +score: float \l | +submit() \l }"];
+    
+    AIGrading [label="{AIGrading | +evaluateAnswer(text) \l +assignScore() \l }"];
+
+    // Relationships
+    User -> Student [arrowhead="empty"];
+    User -> Teacher [arrowhead="empty"];
+    Teacher -> Quiz [label="creates"];
+    Student -> Attempt [label="takes"];
+    Attempt -> Quiz [label="belongs to"];
+    Quiz -> Question [label="contains"];
+    AIGrading -> Attempt [label="evaluates"];
+}
