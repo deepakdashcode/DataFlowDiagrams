@@ -1,0 +1,17 @@
+digraph StateChart {
+    rankdir=TB;
+    node [shape=circle];
+
+    Start [label="Start", shape=point];
+    Idle [label="Idle"];
+    Attempting [label="Attempting Quiz"];
+    Submitted [label="Submitted"];
+    Evaluated [label="Evaluated"];
+    End [label="End", shape=doublecircle];
+
+    Start -> Idle;
+    Idle -> Attempting [label="Student starts quiz"];
+    Attempting -> Submitted [label="Student submits answers"];
+    Submitted -> Evaluated [label="AI/Teacher evaluates"];
+    Evaluated -> End [label="Results are available"];
+}
