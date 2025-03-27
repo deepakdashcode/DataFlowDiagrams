@@ -1,0 +1,24 @@
+digraph ObjectDiagram {
+    rankdir=TB;
+    node [shape=record];
+
+    // Objects
+    Student1 [label="{Student: userId=101 | username: 'deepak' }"];
+    Teacher1 [label="{Teacher: userId=201 | username: 'prof_ramesh' }"];
+    
+    Quiz1 [label="{Quiz: id=1 | title: 'Software Engineering' }"];
+    
+    Q1 [label="{Question: id=1 | text: 'What is UML?' }"];
+    Q2 [label="{Question: id=2 | text: 'Explain Use Case Diagram'}"];
+    
+    Attempt1 [label="{Attempt: attemptId=5001 | studentId=101 | quizId=1 | score=85 }"];
+    
+    AI1 [label="{AIGrading | evaluateAnswer() }"];
+
+    // Relationships
+    Student1 -> Attempt1 [label="attempts"];
+    Teacher1 -> Quiz1 [label="created"];
+    Quiz1 -> Q1 [label="contains"];
+    Quiz1 -> Q2 [label="contains"];
+    Attempt1 -> AI1 [label="evaluated by"];
+}
