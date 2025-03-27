@@ -1,0 +1,21 @@
+digraph ActivityDiagram {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightgray];
+
+    Start [label="Start", shape=oval, fillcolor=white];
+    Login [label="Login"];
+    SelectQuiz [label="Select Quiz"];
+    AttemptQuiz [label="Answer Questions"];
+    SubmitQuiz [label="Submit Quiz"];
+    Evaluate [label="AI/Teacher Evaluates"];
+    ViewResults [label="View Results"];
+    End [label="End", shape=oval, fillcolor=white];
+
+    Start -> Login;
+    Login -> SelectQuiz;
+    SelectQuiz -> AttemptQuiz;
+    AttemptQuiz -> SubmitQuiz;
+    SubmitQuiz -> Evaluate;
+    Evaluate -> ViewResults;
+    ViewResults -> End;
+}
