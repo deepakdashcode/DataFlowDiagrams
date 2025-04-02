@@ -1,0 +1,33 @@
+@startuml
+object User
+object "Backend Server"
+object Database
+
+User -> "Backend Server": 1. Register
+"Backend Server" -> Database: 2. Store Credentials
+Database -> "Backend Server": 3. Return Creation Status
+"Backend Server" -> User: 4. Account Created
+
+User -> "Backend Server": 5. Login
+"Backend Server" -> Database: 6. Verify Credentials
+Database -> "Backend Server": 7. Return Auth Status
+"Backend Server" -> User: 8. Access Granted
+
+User -> "Backend Server": 9. Create Quiz
+"Backend Server" -> Database: 10. Store Quiz
+Database -> "Backend Server": 11. Return Quiz ID
+
+User -> "Backend Server": 12. Fetch Quiz
+"Backend Server" -> Database: 13. Get Quiz Query
+Database -> "Backend Server": 14. Send Questions
+"Backend Server" -> User: 15. Display Questions
+
+User -> "Backend Server": 16. Submit Quiz
+"Backend Server" -> Database: 17. Store Quiz Answers
+"Backend Server" -> Database: 18. Fetch Answers
+Database -> "Backend Server": 19. Send Quiz & Answers
+
+"Backend Server" -> Database: 22. Get Student Email
+Database -> "Backend Server" : 23. Send Student Email
+"Backend Server" -> User: 24. Send Evaluated Results via Email
+@enduml
