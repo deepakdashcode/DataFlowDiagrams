@@ -1,0 +1,32 @@
+@startuml
+start
+
+:User Registration/Login;
+
+if (Login Success?) then (Yes)
+    :Show Dashboard;
+    if (Role = Student?) then (Yes)
+        :Get Quiz ID from Teacher;
+        :Get Questions from Quiz ID;
+        :Answer Questions;
+        :Submit Quiz;
+        :Wait for AI to Evaluate;
+        :Get Results via Email;
+    else (No - Teacher Path)
+        :Create Quiz;
+        :Send Quiz ID;
+        :Wait for Student Submission;
+        :Evaluate Request to AI Model;
+        :Generate Result;
+        if (Error?) then (No)
+            :Show Error;
+        else (Yes)
+            :Send Result;
+        endif
+    endif
+else (No)
+    :Show Error;
+endif
+
+stop
+@enduml
