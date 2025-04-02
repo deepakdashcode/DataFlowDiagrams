@@ -1,0 +1,36 @@
+@startuml
+actor Student
+actor Teacher
+participant "Quiz System" as QS
+participant "AI Model" as AI
+participant Database
+
+Student -> QS: Register
+QS -> Database: Store credentials
+
+Student -> QS: Login
+QS -> AI: Verify credentials
+AI -> QS: Authentication successful
+QS -> Student: Access granted
+
+Teacher -> QS: Create Quiz
+QS -> Database: Store quiz data
+QS -> Teacher: Return Quiz ID
+
+Student -> QS: Enter Quiz ID
+QS -> Database: Return Questions
+QS -> Student: Return Questions
+
+Student -> QS: Answer & Submit Questions
+QS -> Database: Store Student Answers
+
+Teacher -> QS: Evaluate (Quiz ID)
+QS -> AI: Send Answers for Evaluation
+AI -> QS: Return Evaluation success message
+QS -> Teacher: Return Evaluation success message
+
+QS -> Database: Fetch Student Email
+Database -> QS: Return Student Email
+
+QS -> Student: Send Results
+@enduml
